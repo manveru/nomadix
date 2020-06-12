@@ -1,0 +1,15 @@
+name: nomadix
+version: 0.1.0
+
+authors:
+  - Michael Fellinger <nomadix@manveru.dev>
+
+description: |
+  The swiss army knife for using Nomad with Nix
+
+dependencies:
+  clim:
+    github: at-grandpa/clim
+    version: 0.10.0
+
+license: MIT
