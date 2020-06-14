@@ -13,8 +13,8 @@ let
     env = { TREE = "${tree}/bin/tree"; };
     command = "${mini}/bin/mini";
   };
-
-  job = mkNomadJob "hello" {
+in
+  mkNomadJob "hello" {
     jobs.foo = {
       datacenters = [ "dc1" ];
       type = "service";
@@ -23,5 +23,4 @@ let
         tasks.hello = helloTask;
       };
     };
-  };
-in job
+  }

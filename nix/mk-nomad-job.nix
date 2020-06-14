@@ -2,10 +2,32 @@
 name: configuration:
 let
   inherit (builtins) length mapAttrs attrNames typeOf;
-  inherit (lib) flip const evalModules getAttrs remove pipe;
+  inherit (lib) flip const evalModules getAttrs remove pipe mapAttrs';
 
-  ignoredAttrs = [ "_ref" "_module" ];
   pp = v: __trace (__toJSON v) v;
+
+  specialUpper = { id = "ID"; };
+
+  capitalizeString = s:
+    specialUpper.${s} or ((lib.toUpper (lib.substring 0 1 s))
+      + (lib.substring 1 (lib.stringLength s) s));
+
+  capitalize = name: value: {
+    name = capitalizeString name;
+    value = value;
+  };
+
+  capitalizeAttrs = set:
+    if set ? command then set else mapAttrs' capitalize set;
+
+  dbg = input:
+    if true then
+      if (lib.traceSeqN 1 (__attrNames input) input) ? description then
+        lib.traceSeqN 1 (__typeOf input.type) input
+      else
+        input
+    else
+      input;
 
   sanitize = value:
     let
@@ -19,6 +41,7 @@ let
           (remove "_ref")
           (remove "_module")
           (flip getAttrs value)
+          capitalizeAttrs
           (mapAttrs (const sanitize))
         ]
       else
@@ -27,19 +50,19 @@ let
 
   evaluateConfiguration = configuration:
     evalModules {
-      modules = [ { imports = [ ./modules/job.nix ]; } configuration ];
-      specialArgs = { inherit pkgs; };
+      modules = [ { imports = [ ./job.nix ]; } configuration ];
+      specialArgs = { inherit pkgs name; };
     };
 
   nomadix = configuration:
     let evaluated = evaluateConfiguration configuration;
     in sanitize evaluated.config;
 
-  evaluated = nomadix configuration;
+  evaluated = {
+    Job = nomadix configuration;
+  };
 
   json = writeText "${name}.json" (builtins.toJSON evaluated);
 
   run = callPackage ./run-nomad-job.nix { inherit json name; };
-in {
-  inherit json evaluated run;
-}
+in { inherit json evaluated run; }
