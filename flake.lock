@@ -1,12 +1,14 @@
 {
   "nodes": {
     "inclusive": {
+      "info": {
+        "lastModified": 1591376980,
+        "narHash": "sha256-pjSyg7JX6fJ/QvVhNhlo794YFW2E4wGVQV+YfuZq5Dk="
+      },
       "inputs": {
         "stdlib": "stdlib"
       },
       "locked": {
-        "lastModified": 1591376980,
-        "narHash": "sha256-pjSyg7JX6fJ/QvVhNhlo794YFW2E4wGVQV+YfuZq5Dk=",
         "owner": "manveru",
         "repo": "nix-inclusive",
         "rev": "bb435b7dce2b8a27d174543f0d768646d0d48fa3",
@@ -19,12 +21,14 @@
       }
     },
     "nixpkgs": {
+      "info": {
+        "lastModified": 1592146134,
+        "narHash": "sha256-qGqZc3ldDWROeBJTLphdl/o3cCCT64ZLoUy2uLOxZSI="
+      },
       "locked": {
-        "lastModified": 1591285666,
-        "narHash": "sha256-oE8P/vyGgCkUw0gfdIXgHN7JVngstmheobVeWEqpCQk=",
         "owner": "NixOS",
         "repo": "nixpkgs-channels",
-        "rev": "c27e54de99df793756a5314f8fd5dd3e49d31927",
+        "rev": "00e448172f3d31eb461f4322eed1f4bed901372b",
         "type": "github"
       },
       "original": {
@@ -43,9 +47,11 @@
       }
     },
     "stdlib": {
-      "locked": {
+      "info": {
         "lastModified": 1590026685,
-        "narHash": "sha256-E5INrVvYX/P/UpcoUFDAsuHem+lsqT+/teBs9O7oc9Q=",
+        "narHash": "sha256-E5INrVvYX/P/UpcoUFDAsuHem+lsqT+/teBs9O7oc9Q="
+      },
+      "locked": {
         "owner": "manveru",
         "repo": "nix-lib",
         "rev": "99088cf7febcdb21afd375a335dcafa959bef3ed",
@@ -59,9 +65,11 @@
     },
     "terranix": {
       "flake": false,
-      "locked": {
+      "info": {
         "lastModified": 1587509300,
-        "narHash": "sha256-t8s8n/V+MEvvHidftyRybOg+DJ9zsCW6ED8HVAMD9mQ=",
+        "narHash": "sha256-t8s8n/V+MEvvHidftyRybOg+DJ9zsCW6ED8HVAMD9mQ="
+      },
+      "locked": {
         "owner": "mrVanDalo",
         "repo": "terranix",
         "rev": "3fdde92c8a3245089be59579fce971d4d82b5b8d",
@@ -74,9 +82,11 @@
       }
     },
     "utils": {
-      "locked": {
+      "info": {
         "lastModified": 1590791977,
-        "narHash": "sha256-l26u9vRsdV9jkoBGlzFxTKLKtrZ38xCMZIG9h9ibFjQ=",
+        "narHash": "sha256-l26u9vRsdV9jkoBGlzFxTKLKtrZ38xCMZIG9h9ibFjQ="
+      },
+      "locked": {
         "owner": "numtide",
         "repo": "flake-utils",
         "rev": "4fbce19a7a9647154a35f0e856d52171c41e14a4",
@@ -90,5 +100,5 @@
     }
   },
   "root": "root",
-  "version": 6
+  "version": 5
 }
